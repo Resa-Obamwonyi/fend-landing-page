@@ -22,7 +22,11 @@
  * Define Global Variables
  *
 */
-
+let navContainer = document.getElementById("navbar__list");
+let sectionOne = document.getElementById("section1");
+let sectionTwo = document.getElementById("section2");
+let sectionThree = document.getElementById("section3");
+let sectionFour = document.getElementById("section4");
 
 /**
  * End Global Variables
