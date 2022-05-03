@@ -47,28 +47,35 @@ function navBuilder() {
 }
 
 
-// Add class 'active' to section when near top of viewport
-function addClassActive(){
-    // for each section in the section group
-    for(let i=0; i<sectionGroup.length; i++){
-        
+// check if element is in viewport
+function isElementInViewPort(element) {
+    // get bounding client
+    let boundingClient = element.getBoundingClientRect();
+    if (boundingClient.top <= 100 && boundingClient.bottom >= 0) { return true; }
+    else { return false; }
+}
+
+// Add class active if element is in viewport, else remove the class
+function addClassActive(e) {
+    e.preventDefault();
+    for (element of sectionGroup) {
+        if (isElementInViewPort(element)) {
+            element.classList.add("active");
+        } else {
+            element.classList.remove("active");
+        }
     }
 }
 
 
 // Scroll to anchor ID using scrollTO event
 
-
-/**
- * End Main Functions
- * Begin Events
- *
-*/
-
-// Build menu
-navBuilder(); 
+// Call Nav Builder
+navBuilder();
 
 // Scroll to section on link click
 
-// Set sections as active
-
+// Event listner to set sections as active
+window.addEventListener("scroll", (e) => {
+    addClassActive(e);
+});
