@@ -1,9 +1,3 @@
-
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
-
 /**
  * Define Global Variables
  *
@@ -11,25 +5,47 @@
 let navContainer = document.getElementById("navbar__list");
 let sectionGroup = document.getElementsByTagName("section");
 
-console.log(sectionGroup);
-// let sectionOne = document.getElementById("section1");
-// let sectionTwo = document.getElementById("section2");
-// let sectionThree = document.getElementById("section3");
-// let sectionFour = document.getElementById("section4");
-
 /**
  * End Global Variables
  * Start Helper Functions
  *
 */
 
+// check if element is in viewport
+function isElementInViewPort(element) {
+    // get bounding client
+    let boundingClient = element.getBoundingClientRect();
+    if (boundingClient.top <= 100 && boundingClient.bottom >= 0) { return true; }
+    else { return false; }
+}
 
+// Event listener for li
+function scrollToClick(e) {
+    e.preventDefault();
+    for (let section of sectionGroup) {
+        if (e.target.textContent === section.dataset.nav) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+}
 
+// Get LI element in view
+function getNavInView(element) {
+    // loop through the nav list
+    for (let elementListItem of navContainer.children) {
+        // get a match based on the list and section in view
+        if (elementListItem.innerHTML === element.dataset.nav) {
+            // return list element in view
+            return elementListItem;
+        }
+    }
+}
 /**
  * End Helper Functions
  * Begin Main Functions
  *
 */
+
 
 // build the nav
 function navBuilder() {
@@ -44,38 +60,35 @@ function navBuilder() {
         // Append list element to ul 
         navContainer.appendChild(listItem);
     }
-}
 
-
-// check if element is in viewport
-function isElementInViewPort(element) {
-    // get bounding client
-    let boundingClient = element.getBoundingClientRect();
-    if (boundingClient.top <= 100 && boundingClient.bottom >= 0) { return true; }
-    else { return false; }
+    // Add Event listener that scrolls to section to Ul container
+    navContainer.addEventListener("click", (e) => scrollToClick(e));
 }
 
 // Add class active if element is in viewport, else remove the class
 function addClassActive(e) {
     e.preventDefault();
-    for (element of sectionGroup) {
-        if (isElementInViewPort(element)) {
-            element.classList.add("active");
+    // loop through each section in the section group
+    for (let section of sectionGroup) {
+        // if section is in view port
+        if (isElementInViewPort(section)) {
+            // add "active" to section class list
+            section.classList.add("active");
+            // get li attached to section
+            liElement = getNavInView(section);
+            // modify css of li to fit active state
         } else {
-            element.classList.remove("active");
+            section.classList.remove("active");
         }
     }
 }
 
 
-// Scroll to anchor ID using scrollTO event
 
 // Call Nav Builder
 navBuilder();
 
-// Scroll to section on link click
-
-// Event listner to set sections as active
+// Event listener to set sections as active
 window.addEventListener("scroll", (e) => {
     addClassActive(e);
 });
