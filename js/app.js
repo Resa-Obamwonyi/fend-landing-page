@@ -64,6 +64,7 @@ function addClassActive(e) {
 function scrollToClick(e) {
     e.preventDefault();
     for (let section of sectionGroup) {
+        // add event listener to section that matches LI textcontent, set scroll behavior to smooth
         if (e.target.textContent === section.dataset.nav) {
             section.scrollIntoView({ behavior: "smooth" });
         }
