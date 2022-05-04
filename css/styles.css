@@ -10,11 +10,11 @@
 
 /* ---- Base Rules ---- */
 body {
-  background: rgb(136, 203, 171);
+  background: rgb(136, 165, 203);
   background: linear-gradient(
     0deg,
-    rgba(136, 203, 171, 1) 0%,
-    rgba(0, 13, 60, 1) 100%
+    rgb(154, 136, 203) 0%,
+    rgb(60, 0, 50) 100%
   );
   margin: 0;
   font-family: "Merriweather", serif;
@@ -176,8 +176,8 @@ section:nth-of-type(even) .landing__container::before {
   background: rgb(255, 255, 255);
   background: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.2) 100%
+    rgba(247, 232, 95, 0.938) 0%,
+    rgba(214, 28, 28, 0.945) 100%
   );
   position: absolute;
   top: 3em;
@@ -195,8 +195,8 @@ section:nth-of-type(3n) .landing__container::after {
   background: rgb(255, 255, 255);
   background: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.2) 100%
+    rgba(247, 232, 95, 0.938) 0%,
+    rgba(214, 28, 28, 0.945) 100%
   );
   position: absolute;
   right: 0;
@@ -214,8 +214,8 @@ section:nth-of-type(3n + 1) .landing__container::after {
   background: rgb(255, 255, 255);
   background: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.2) 100%
+    rgba(247, 232, 95, 0.938) 0%,
+    rgba(214, 28, 28, 0.945) 100%
   );
   position: absolute;
   right: 20vw;
